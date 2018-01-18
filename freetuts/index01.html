@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>VueJS Hello World</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script language="javascript" src="/freetuts/node_modules/vue/dist/vue.js"></script>
+        <script language="javascript">
+        var MessageApp = null;
+
+        var MessageAbb = null;
+        window.onload = function () {
+            MessageApp = new Vue({
+                el: "#message_app",
+                data:{
+                    name: 'trong dat',
+                    message: 'abcdef'
+                }
+            });
+
+            MessageAbb = new Vue({
+                el: "#message_abb",
+                data:{
+                    name: 'trong dat',
+                    message: 'adfesrerer'
+                }
+            });
+        };
+        </script>
+    </head>
+    <body>
+        <div id="message_app">
+            Hello : {{name}}
+            <br>
+            Message : {{message}}
+        </div>
+
+        <div id="message_abb">
+            Hello : {{name}}
+            <br>
+            Message : {{message}}
+        </div>
+    </body>
+</html>
