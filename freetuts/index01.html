@@ -8,21 +8,23 @@
         <script language="javascript">
         var MessageApp = null;
 
-        var MessageAbb = null;
+        Vue.component('my-component', {
+            template: '<div>Đây là một component!</div>'
+        });
+
+        var child = {
+            template: "<div> child component? </div>" 
+        }
+
         window.onload = function () {
             MessageApp = new Vue({
                 el: "#message_app",
+                components: {
+                    "child-component":  child
+                },
                 data:{
                     name: 'trong dat',
                     message: 'abcdef'
-                }
-            });
-
-            MessageAbb = new Vue({
-                el: "#message_abb",
-                data:{
-                    name: 'trong dat',
-                    message: 'adfesrerer'
                 }
             });
         };
@@ -33,12 +35,10 @@
             Hello : {{name}}
             <br>
             Message : {{message}}
-        </div>
-
-        <div id="message_abb">
-            Hello : {{name}}
             <br>
-            Message : {{message}}
+            <my-component></my-component>
+            <child-component></child-component>
         </div>
+        
     </body>
 </html>
