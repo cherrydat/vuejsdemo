@@ -2,29 +2,42 @@
   <div id="app">
     <img src="./assets/logo.png">
     <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+    <todo-list v-on:delete-todo="deleteTodo" v-bind:todos="todos"></todo-list>
   </div>
 </template>
 
 <script>
+import TodoList from './components/TodoList'
+
 export default {
   name: 'app',
+  components: {
+    TodoList
+  },
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      todos:[{
+        title: "todo A",
+        project: "project A",
+        done:true
+      },{
+        title: "todo B",
+        project: "project B",
+        done:true
+      },{
+        title: "todo C",
+        project: "project C",
+        done:true
+      }
+      ]
+    }
+  },
+  methods:{
+    deleteTodo(todo){
+      const todoIndex = this.todos.indexOf(todos);
+      console.log(todo);
+      this.todos.splice(todoIndex,1);
     }
   }
 }
@@ -42,16 +55,6 @@ export default {
 
 h1, h2 {
   font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
 }
 
 a {
